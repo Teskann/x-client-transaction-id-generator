@@ -1,3 +1,6 @@
+import os.path
+import pickle
+
 from flask import Flask, request, jsonify
 import bs4
 import requests
@@ -37,6 +40,16 @@ def health_check():
 
 @app.route('/reset-session', methods=['GET'])
 def reset_session():
+    def token_is_valid(token):
+        from pathlib import Path
+        with open(Path(__file__).parent / 'reset-session-token-secret.txt', 'r') as f:
+            accepted_token = f.read()
+        return token == accepted_token
+
+    token = request.args.get('token')
+    if not token or not token_is_valid(token):
+        return jsonify({'error': 'Invalid token'}), 401
+
     global client_transaction
     client_transaction = initialize_session()
     return jsonify({'message': 'Session reinitialized successfully'}), 200

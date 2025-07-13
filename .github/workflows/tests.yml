@@ -1,0 +1,21 @@
+name: Test with Coverage
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up project, install pytest + pytest-cov, run tests
+        shell: bash
+        run: |
+          chmod +x ./setup.sh
+          ./setup.sh
+          source ./.venv/bin/activate
+          pip install pytest pytest-cov
+          pytest --cov=tests --cov-report=term-missing --cov-report=xml

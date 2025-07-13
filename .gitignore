@@ -3,3 +3,6 @@
 /__pycache__
 .idea
 .vscode
+reset-session-token-secret.txt
+.coverage
+coverage.xml
