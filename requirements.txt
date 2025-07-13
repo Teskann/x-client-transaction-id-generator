@@ -2,3 +2,4 @@ flask~=3.1.1
 pip~=25.1.1
 beautifulsoup4~=4.13.4
 requests~=2.32.4
+XClientTransaction~=1.0.0

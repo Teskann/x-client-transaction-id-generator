@@ -9,10 +9,13 @@ Wrapper of [XClientTransaction](https://github.com/iSarabjitDhiman/XClientTransa
 ## 🔧 Setup
 
 ```bash
-chmod +x setup.sh
-./setup.sh
+python3 -mvenv .venv
+source ./.venv/bin/activate
+pip install -r requirements.txt
+python generate_secret_token.py
 ```
 
+Launch:
 ```bash
 python app.py
 ```
@@ -59,7 +62,7 @@ It might be useful to call this once, if the generated `x-client-transaction-id`
 **Parameters**:
 
 - `token`: token that gives you the right to reset the session.
-An unique token is created when you call run [./setup.sh](./setup.sh) and is stored in
+An unique token is created when you call run [python generate_secret_token.py](./generate_secret_token.py) and is stored in
 [reset-session-token-secret.txt](./reset-session-token-secret.txt).
 The request succeeds only if the passed token matches the one in [reset-session-token-secret.txt](./reset-session-token-secret.txt) 
   - **Required**

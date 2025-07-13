@@ -14,8 +14,9 @@ jobs:
       - name: Set up project, install pytest + pytest-cov, run tests
         shell: bash
         run: |
-          chmod +x ./setup.sh
-          ./setup.sh
+          python -mvenv .venv
           source ./.venv/bin/activate
+          pip install -r requirements.txt
+          python generate_secret_token.py
           pip install pytest pytest-cov
           pytest --cov=tests --cov-report=term-missing --cov-report=xml

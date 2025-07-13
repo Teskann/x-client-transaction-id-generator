@@ -1,11 +1,8 @@
-import os.path
-import pickle
-
 from flask import Flask, request, jsonify
 import bs4
 import requests
-from XClientTransaction.x_client_transaction.utils import generate_headers, handle_x_migration, get_ondemand_file_url
-from XClientTransaction.x_client_transaction import ClientTransaction
+from x_client_transaction.utils import generate_headers, handle_x_migration, get_ondemand_file_url
+from x_client_transaction import ClientTransaction
 
 app = Flask(__name__)
 
